@@ -54,4 +54,8 @@ public class CustomerService {
             return null;
         }
     }
+
+    public void deleteCustomer(Integer cid) {
+        customerRepository.deleteById(cid);
+    }
 }

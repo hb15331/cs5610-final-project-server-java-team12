@@ -43,6 +43,11 @@ public class CustomerController {
     Used for admins to delete customers from the database.
      */
 
+    @DeleteMapping("/api/customers/{cid}")
+    public void deleteCustomer(
+            @PathVariable("cid") Integer cid) {
+        service.deleteCustomer(cid);
+    }
 
 }
 
