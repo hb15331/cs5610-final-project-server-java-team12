@@ -10,12 +10,23 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderId;
     private Integer customerId;
+    private Integer delivererId;
     private String items;
 
-    public Order(Integer orderId, Integer customerId, String items) {
+    public Integer getDelivererId() {
+        return delivererId;
+    }
+
+    public void setDelivererId(Integer delivererId) {
+        this.delivererId = delivererId;
+    }
+
+    public Order(Integer orderId, Integer customerId, String items,
+                 Integer delivererId) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.items = items;
+        this.delivererId = delivererId;
     }
 
     public Order() {

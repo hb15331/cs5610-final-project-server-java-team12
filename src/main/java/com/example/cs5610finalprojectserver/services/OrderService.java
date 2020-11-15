@@ -37,6 +37,7 @@ public class OrderService {
         if (orderO.isPresent()) {
             Order order = (Order) orderO.get();
             order.setCustomerId(newOrder.getCustomerId());
+            order.setDelivererId(newOrder.getDelivererId());
             order.setItems(newOrder.getItems());
             return orderRepository.save(order);
         } else {
