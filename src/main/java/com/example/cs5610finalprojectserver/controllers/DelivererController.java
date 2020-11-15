@@ -16,9 +16,18 @@ public class DelivererController {
     @Autowired
     DelivererService service;
 
-    @GetMapping("/api/deliverer")
+    @GetMapping("/api/deliverers")
     public List<Deliverer> findAllDeliverer() {
         return service.findAllDeliverer();
+    }
+
+    /*
+       Can be used to by admin to find a deliverer by id.
+    */
+    @GetMapping("/api/deliverers/{did}")
+    public Deliverer findDelivererById(
+            @PathVariable("did") Integer delivererId) {
+        return service.findDelivererById(delivererId);
     }
 
     /*

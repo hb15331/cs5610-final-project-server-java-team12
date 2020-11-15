@@ -23,6 +23,15 @@ public class OrderController {
     }
 
     /*
+    Used to find orders by Id
+     */
+    @GetMapping("/api/orders/{oid}")
+    public Order findOrderById(
+            @PathVariable("oid") Integer orderId) {
+        return service.findOrderById(orderId);
+    }
+
+    /*
    Used to create an order by each customer
     */
     @PostMapping("/api/orders")

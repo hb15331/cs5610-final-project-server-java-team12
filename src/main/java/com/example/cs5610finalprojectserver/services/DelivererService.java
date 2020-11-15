@@ -6,6 +6,8 @@ import com.example.cs5610finalprojectserver.repositories.CustomerRepository;
 import com.example.cs5610finalprojectserver.repositories.DelivererRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -25,6 +27,10 @@ public class DelivererService {
      */
     public List<Deliverer>findAllDeliverer() {
         return (List<Deliverer>) delivererRepository.findAll();
+    }
+
+    public Deliverer findDelivererById(Integer delivererId) {
+        return delivererRepository.findById(delivererId).get();
     }
 
     public Deliverer createDeliverer(Deliverer deliverer) {

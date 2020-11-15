@@ -19,6 +19,12 @@ public class CustomerController {
         return service.findAllCustomers();
     }
 
+    @GetMapping("/api/customers/{cid}")
+    public Customer findCustomerById(
+            @PathVariable("cid") Integer customerId) {
+        return service.findCustomerById(customerId);
+    }
+
     /*
     Used to add a customer to the database when they register.
      */
