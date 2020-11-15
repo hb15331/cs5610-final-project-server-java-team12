@@ -1,7 +1,7 @@
 package com.example.cs5610finalprojectserver.services;
 
 import com.example.cs5610finalprojectserver.models.Customer;
-import com.example.cs5610finalprojectserver.reposetories.CustomerRepository;
+import com.example.cs5610finalprojectserver.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +15,6 @@ public class CustomerService {
     CustomerRepository customerRepository;
 
     List<Customer> customers = new ArrayList<Customer>();
-
-    {
-        customers.add(new Customer(123,"Charlie", "Smith", "Boston"));
-        customers.add(new Customer(456,"Anne", "Kim", "New York"));
-        customers.add(new Customer(456,"Anne", "Kim", "New York"));
-    }
 
     /*
         Can be used by the admin to find all customer users.
