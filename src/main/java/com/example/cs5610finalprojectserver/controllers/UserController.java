@@ -34,6 +34,13 @@ public class UserController {
     @PostMapping("/register")
     public User register(HttpSession session,
                          @RequestBody User user) {
+
+        // if the same username already exists in database, invalidate the register
+        if (userRepository.findUserByUsername(user.getUsername()) != null) {
+            return null;
+        }
+
+        // if the username is not present in database
         User newUser = userRepository.save(user);
         newUser.setPassword("***");
         session.setAttribute("profile", newUser);
