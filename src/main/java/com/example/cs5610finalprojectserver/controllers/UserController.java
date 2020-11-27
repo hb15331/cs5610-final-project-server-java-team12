@@ -2,10 +2,9 @@ package com.example.cs5610finalprojectserver.controllers;
 
 import com.example.cs5610finalprojectserver.models.User;
 import com.example.cs5610finalprojectserver.repositories.UserRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
 
@@ -26,35 +25,56 @@ public class UserController {
                       @RequestBody User user) {
         User profile = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
         session.setAttribute("profile", profile);
-        // if the user profile is found in database,
-        // set this profile in the session as the current logged in user
         return profile;
     }
 
     @PostMapping("/register")
     public User register(HttpSession session,
                          @RequestBody User user) {
-
-        // if the same username already exists in database, invalidate the register
+        // invalidate the register if the same username is already present
         if (userRepository.findUserByUsername(user.getUsername()) != null) {
             return null;
         }
-
-        // if the username is not present in database
+        // otherwise create a new record in database
         User newUser = userRepository.save(user);
-        newUser.setPassword("***");
+        //newUser.setPassword("***");
+        // set new user as the current user in session
         session.setAttribute("profile", newUser);
-        // once we register a new user in database,
-        // set this new user in the session as the current logged in user
         return newUser;
     }
 
     @PostMapping("/profile")
+    // return current user's profile
     public User profile(HttpSession session) {
         User profile = (User)session.getAttribute("profile");
-        // return the profile of the current logged in user
         return profile;
     }
 
+
+    @PutMapping("/api/profiles/{pid}")
+    public Integer updateProfile(
+        HttpSession session, @PathVariable("pid") Integer pid, @RequestBody User newProfile) {
+        // newProfile is sent from client
+        Optional profileO = userRepository.findById(pid);
+        if (profileO.isPresent()) {
+            // must update and save the profile retrieved from database
+            User profile = (User) profileO.get();
+
+            // check whether the new username causes any conflict in database
+            String newUsername = newProfile.getUsername();
+            if (!(profile.getUsername().equals(newUsername)) &&
+                userRepository.findUserByUsername(newUsername) != null)
+                return 0;
+
+            profile.setUsername(newProfile.getUsername());
+            profile.setPassword(newProfile.getPassword());
+            profile.setEmail(newProfile.getEmail());
+            newProfile = userRepository.save(profile);
+            // register the updated profile to the session
+            session.setAttribute("profile", newProfile);
+            return 1;
+        }
+        return 0;
+    }
 
 }
