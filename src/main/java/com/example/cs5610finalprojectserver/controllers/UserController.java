@@ -16,8 +16,9 @@ public class UserController {
     UserRepository userRepository;
 
     @PostMapping("/logout")
-    public void logout(HttpSession session) {
+    public Integer logout(HttpSession session) {
         session.invalidate();
+        return 1;
     }
 
     @PostMapping("/login")
