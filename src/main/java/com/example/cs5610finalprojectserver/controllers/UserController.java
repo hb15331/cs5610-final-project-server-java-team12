@@ -4,6 +4,8 @@ import com.example.cs5610finalprojectserver.models.User;
 import com.example.cs5610finalprojectserver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ public class UserController {
 
     @Autowired
     UserRepository userRepository;
+
 
     @PostMapping("/logout")
     public Integer logout(HttpSession session) {
@@ -49,6 +52,21 @@ public class UserController {
     public User profile(HttpSession session) {
         User profile = (User)session.getAttribute("profile");
         return profile;
+    }
+
+    @GetMapping("/api/profiles")
+    public List<User> findAllUsers() {
+        return userRepository.findAllUsers();
+    }
+
+    @GetMapping("/api/profiles/{pid}")
+    public User findUserById(HttpSession session, @PathVariable("pid") Integer pid) {
+        Optional profile0 = userRepository.findById(pid);
+        if(profile0.isPresent()) {
+            User profile = (User) profile0.get();
+            return profile;
+        }
+        return null;
     }
 
 
