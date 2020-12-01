@@ -12,6 +12,7 @@ public class Order {
     private Integer customerId;
     private Integer delivererId;
     private String items;
+    private String image;
 
     public Integer getDelivererId() {
         return delivererId;
@@ -21,12 +22,22 @@ public class Order {
         this.delivererId = delivererId;
     }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
     public Order(Integer orderId, Integer customerId, String items,
-                 Integer delivererId) {
+                 Integer delivererId, String image) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.items = items;
         this.delivererId = delivererId;
+        this.image = image;
+
     }
 
     public Order() {
