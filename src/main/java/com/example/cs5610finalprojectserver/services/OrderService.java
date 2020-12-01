@@ -30,6 +30,11 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
+    public List<Order> findOrderForUser(Integer customerId) {
+//        widget.setTopicId(tid);
+        return orderRepository.findOrderForUser(customerId);
+    }
+
     public Order updateOrder(
             Integer orderId,
             Order newOrder) {
