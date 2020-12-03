@@ -69,6 +69,14 @@ public class UserController {
         return null;
     }
 
+    @GetMapping("/api/profiles/{pid}/deliverers")
+    public List<User> findMatchingDeliverers(HttpSession session, @PathVariable("pid") Integer pid) {
+        User customer = findUserById(session, pid);
+        String location = customer.getLocation();
+        String type = "DELIVERER";
+        return userRepository.findMatchingDeliverers(location, type);
+    }
+
 
     @PutMapping("/api/profiles/{pid}")
     public Integer updateProfile(
@@ -88,6 +96,7 @@ public class UserController {
             profile.setUsername(newProfile.getUsername());
             profile.setPassword(newProfile.getPassword());
             profile.setEmail(newProfile.getEmail());
+            profile.setLocation(newProfile.getLocation());
             newProfile = userRepository.save(profile);
             // register the updated profile to the session
             session.setAttribute("profile", newProfile);

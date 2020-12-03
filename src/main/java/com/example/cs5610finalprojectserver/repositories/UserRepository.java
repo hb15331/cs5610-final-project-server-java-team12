@@ -21,8 +21,15 @@ public interface UserRepository extends CrudRepository<User,Integer> {
   @Query("SELECT user FROM User user WHERE user.username=:username")
   public User findUserByUsername(@Param("username") String username);
 
+
   @Query(value = "SELECT * FROM users", nativeQuery = true)
   public List<User> findAllUsers();
+
+  @Query("SELECT user FROM User user WHERE user.location=:location AND user.type=:type")
+  public List<User> findMatchingDeliverers(
+          @Param("location") String location,
+          @Param("type") String type
+  );
 
 
 }
