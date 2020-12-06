@@ -2,6 +2,7 @@ package com.example.cs5610finalprojectserver.models;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name="users")
 public class User {
@@ -14,7 +15,23 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    private String location;
 
+    public User(Integer userId, String username, String type, String password,
+                String firstName, String lastName, String email, String location) {
+        this.userId = userId;
+        this.username = username;
+        this.type = type;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.location = location;
+    }
+
+    public User(){
+
+    }
 
     public Integer getUserId() {
         return userId;
@@ -70,5 +87,13 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
