@@ -105,4 +105,18 @@ public class UserController {
         return 0;
     }
 
+    @GetMapping("/api/profiles/{uid}")
+    public User findPublicProfileById(@PathVariable("uid") Integer userId) {
+        Optional userO = userRepository.findById(userId);
+        if(userO.isPresent()) {
+            User publicInfo = (User) userO.get();
+            //hide private info
+            publicInfo.setPassword("");
+            publicInfo.setEmail("");
+            publicInfo.setFirstName("");
+            publicInfo.setLastName("");
+            return publicInfo;
+        }
+        return null;
+        }
 }

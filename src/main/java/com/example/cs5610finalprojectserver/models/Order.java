@@ -13,6 +13,8 @@ public class Order {
     private Integer delivererId;
     private String items;
     private String image;
+    private String name;
+    private String username;
 
     public Integer getDelivererId() {
         return delivererId;
@@ -22,13 +24,41 @@ public class Order {
         this.delivererId = delivererId;
     }
 
-    public Order(Integer orderId, Integer customerId, String items,
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Order(Integer orderId, String name, Integer customerId,
+                 String username, String items,
                  Integer delivererId, String image) {
         this.orderId = orderId;
         this.customerId = customerId;
+        this.name = name;
         this.items = items;
         this.delivererId = delivererId;
         this.image = image;
+        this.username = username;
+
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Order() {
@@ -58,15 +88,6 @@ public class Order {
     public String getItems() {
         return items;
     }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
 
     //TODO: list of items???? private List items???
 }
