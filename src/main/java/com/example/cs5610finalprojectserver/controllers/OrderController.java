@@ -35,14 +35,14 @@ Used to update each order.
     }
 
 
-    /*
-Used to update each order.
- */
-    @GetMapping("/api/orders/{cid}/orders")
-    public List<Order> findOrderForUser(
-            @PathVariable("cid") Integer customerId) {
-        return service.findOrderForUser(customerId);
-    }
+//    /*
+//Used to update each order.
+// */
+//    @GetMapping("/api/orders/{cid}/orders")
+//    public List<Order> findOrderForUser(
+//            @PathVariable("cid") Integer customerId) {
+//        return service.findOrderForUser(customerId);
+//    }
 
     /*
     Used to find orders by Id
