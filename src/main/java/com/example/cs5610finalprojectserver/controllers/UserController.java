@@ -105,7 +105,7 @@ public class UserController {
         return 0;
     }
 
-    @GetMapping("/api/profiles/{uid}")
+    @GetMapping("/api/profile/{uid}")
     public User findPublicProfileById(@PathVariable("uid") Integer userId) {
         Optional userO = userRepository.findById(userId);
         if(userO.isPresent()) {
