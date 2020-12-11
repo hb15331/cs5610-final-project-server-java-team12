@@ -1,16 +1,12 @@
 package com.example.cs5610finalprojectserver.controllers;
 
 
-import com.example.cs5610finalprojectserver.models.Customer;
 import com.example.cs5610finalprojectserver.models.Order;
-import com.example.cs5610finalprojectserver.models.User;
-import com.example.cs5610finalprojectserver.services.CustomerService;
 import com.example.cs5610finalprojectserver.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import javax.servlet.http.HttpSession;
 
 @RestController
 @CrossOrigin(origins = "*")

@@ -5,6 +5,7 @@ import com.example.cs5610finalprojectserver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 @RestController
 //@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
+
 public class UserController {
 
     @Autowired
@@ -120,4 +122,10 @@ public class UserController {
         }
         return null;
         }
+
+    @DeleteMapping("/api/profiles/{pid}")
+    public void deleteDeliverer(
+            @PathVariable("pid") Integer pid) {
+        userRepository.deleteById(pid);
+    }
 }

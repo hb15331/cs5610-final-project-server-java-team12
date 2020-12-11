@@ -1,8 +1,6 @@
 package com.example.cs5610finalprojectserver.services;
 
-import com.example.cs5610finalprojectserver.models.Customer;
 import com.example.cs5610finalprojectserver.models.Order;
-import com.example.cs5610finalprojectserver.repositories.CustomerRepository;
 import com.example.cs5610finalprojectserver.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
