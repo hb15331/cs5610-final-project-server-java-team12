@@ -16,6 +16,7 @@ public class Order {
     private String name;
     private String username;
     private String recipeUri;
+    private String comments;
 
     public Integer getDelivererId() {
         return delivererId;
@@ -49,9 +50,18 @@ public class Order {
         return recipeUri;
     }
 
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
     public Order(Integer orderId, String name, Integer customerId,
                  String username, String items,
-                 Integer delivererId, String image, String recipeUri) {
+                 Integer delivererId, String image, String recipeUri,
+                 String comments) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.name = name;
@@ -60,7 +70,7 @@ public class Order {
         this.image = image;
         this.username = username;
         this.recipeUri = recipeUri;
-
+        this.comments = comments;
     }
 
     public void setName(String name) {
