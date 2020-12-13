@@ -42,6 +42,7 @@ public class OrderService {
             order.setCustomerId(newOrder.getCustomerId());
             order.setDelivererId(newOrder.getDelivererId());
             order.setItems(newOrder.getItems());
+            order.setDelivered(newOrder.getDelivered());
             order.setComments(newOrder.getComments());
             return orderRepository.save(order);
         } else {

@@ -17,6 +17,16 @@ public class Order {
     private String username;
     private String recipeUri;
     private String comments;
+    private boolean delivered;
+
+
+    public void setDelivered(boolean delivered) {
+        this.delivered = delivered;
+    }
+
+    public boolean getDelivered() {
+        return this.delivered;
+    }
 
     public Integer getDelivererId() {
         return delivererId;
@@ -61,7 +71,7 @@ public class Order {
     public Order(Integer orderId, String name, Integer customerId,
                  String username, String items,
                  Integer delivererId, String image, String recipeUri,
-                 String comments) {
+                 String comments, boolean delivered) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.name = name;
@@ -71,6 +81,7 @@ public class Order {
         this.username = username;
         this.recipeUri = recipeUri;
         this.comments = comments;
+        this.delivered = delivered;
     }
 
     public void setName(String name) {
