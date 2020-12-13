@@ -15,6 +15,10 @@ public interface OrderRepository extends CrudRepository<Order,Integer> {
     List<Order> findOrderForUser(
             @Param("customerId") Integer customerId);
 
+    @Query("SELECT order FROM Order order WHERE order.delivererId=:delivererId")
+    List<Order> findOrderByDeliverer(
+            @Param("delivererId") Integer delivererId);
+
 //@Query("SELECT order FROM Order order WHERE order.customerId=:customerId")
 //     List<Order> findOrderForUser(
 //            @Param("customerId") Integer customerId);

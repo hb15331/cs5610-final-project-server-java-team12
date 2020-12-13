@@ -50,6 +50,10 @@ public class OrderService {
         }
     }
 
+    public List<Order> findOrderByDeliverer(Integer delivererId) {
+        return orderRepository.findOrderByDeliverer(delivererId);
+    }
+
     public void deleteOrder(Integer oid) {
         orderRepository.deleteById(oid);
     }
