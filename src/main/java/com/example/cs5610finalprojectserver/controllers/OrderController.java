@@ -81,4 +81,14 @@ Used to update each order.
             @PathVariable("oid") Integer oid) {
         service.deleteOrder(oid);
     }
+
+    /*
+    Used to find orders by Id
+     */
+    @GetMapping("/api/orders/{did}/deliveryorders")
+    public List<Order> findOrderByDeliverer(
+            @PathVariable("did") Integer delivererId) {
+        return service.findOrderByDeliverer(delivererId);
+    }
 }
+
